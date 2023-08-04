@@ -1,0 +1,68 @@
+{
+  "pins" : [
+    {
+      "identity" : "basetoolbox",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/lkzhao/BaseToolbox.git",
+      "state" : {
+        "revision" : "62fe235533582054af1d7f13de714c76a72cf12f",
+        "version" : "0.4.1"
+      }
+    },
+    {
+      "identity" : "hue",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/zenangst/Hue.git",
+      "state" : {
+        "revision" : "b9d920cee4ba795fefb828d130744eee1e3d2feb",
+        "version" : "5.0.1"
+      }
+    },
+    {
+      "identity" : "rxswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ReactiveX/RxSwift.git",
+      "state" : {
+        "revision" : "9dcaa4b333db437b0fbfaf453fad29069044a8b4",
+        "version" : "6.6.0"
+      }
+    },
+    {
+      "identity" : "snapkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SnapKit/SnapKit.git",
+      "state" : {
+        "revision" : "f222cbdf325885926566172f6f5f06af95473158",
+        "version" : "5.6.0"
+      }
+    },
+    {
+      "identity" : "swifterswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwifterSwift/SwifterSwift.git",
+      "state" : {
+        "revision" : "933f27d8e7fa0bf8200a5d6235e0de383b801126",
+        "version" : "5.3.0"
+      }
+    },
+    {
+      "identity" : "swiftyjson",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftyJSON/SwiftyJSON.git",
+      "state" : {
+        "revision" : "b3dcd7dbd0d488e1a7077cb33b00f2083e382f07",
+        "version" : "5.0.1"
+      }
+    },
+    {
+      "identity" : "yetanotheranimationlibrary",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/lkzhao/YetAnotherAnimationLibrary.git",
+      "state" : {
+        "revision" : "9a924cb520568f96e7dc9eed683a8b7c385e0d2f",
+        "version" : "1.6.0"
+      }
+    }
+  ],
+  "version" : 2
+}

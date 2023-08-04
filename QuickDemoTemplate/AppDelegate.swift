@@ -14,6 +14,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        UIViewController.doBadSwizzleStuff()
+        
+        UINavigationBar.appearance().titleTextAttributes = [.font: UIFont.qt_body(size: 22).bolded]
+        UINavigationBar.appearance().largeTitleTextAttributes = [.font: UIFont.qt_title.bolded]
+        
+        TappableViewConfiguration.default = TappableViewConfiguration(
+            onHighlightChanged: { view, isHighlighted in
+                let scale: CGFloat = isHighlighted ? 0.95 : 1.0 / 0.95
+                UIView.animate(withDuration: 0.2) {
+                    view.transform = view.transform.scaledBy(x: scale, y: scale)
+                }
+            }
+        )
+        
         return true
     }
 
