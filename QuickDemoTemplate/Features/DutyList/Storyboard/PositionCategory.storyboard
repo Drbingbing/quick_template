@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Primary Position Category View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="PrimaryPositionCategoryViewController" id="Y6W-OH-hqX" customClass="PrimaryPositionCategoryViewController" customModule="QuickDemoTemplate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ICu-rF-N9M" customClass="CollectionView" customModule="QuickDemoTemplate" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" name="system_gray6"/>
+                        <constraints>
+                            <constraint firstItem="ICu-rF-N9M" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="0wZ-xs-zoQ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ICu-rF-N9M" secondAttribute="trailing" id="afP-de-EkK"/>
+                            <constraint firstItem="ICu-rF-N9M" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="c6m-5B-Eng"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="ICu-rF-N9M" secondAttribute="bottom" id="ia9-aT-To2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="ICu-rF-N9M" id="XVn-KH-OCo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="5"/>
+        </scene>
+        <!--Secondary Position Category View Controller-->
+        <scene sceneID="psy-ig-dKW">
+            <objects>
+                <viewController storyboardIdentifier="SecondaryPositionCategoryViewController" id="3JS-ZY-QqX" customClass="SecondaryPositionCategoryViewController" customModule="QuickDemoTemplate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="m18-Rw-aJh">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5h7-cT-Txw" customClass="CollectionView" customModule="QuickDemoTemplate" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="cUW-cS-Io1"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                        <constraints>
+                            <constraint firstItem="5h7-cT-Txw" firstAttribute="leading" secondItem="cUW-cS-Io1" secondAttribute="leading" id="4Tf-wd-avX"/>
+                            <constraint firstItem="5h7-cT-Txw" firstAttribute="top" secondItem="cUW-cS-Io1" secondAttribute="top" id="Ms1-b8-03N"/>
+                            <constraint firstItem="cUW-cS-Io1" firstAttribute="bottom" secondItem="5h7-cT-Txw" secondAttribute="bottom" id="hjk-w0-KDZ"/>
+                            <constraint firstItem="cUW-cS-Io1" firstAttribute="trailing" secondItem="5h7-cT-Txw" secondAttribute="trailing" id="ySL-Bl-8IP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="5h7-cT-Txw" id="RwD-4U-85T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9S3-wT-vMq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="921" y="5"/>
+        </scene>
+        <!--Tertitary Position Category View Controller-->
+        <scene sceneID="8Vd-zv-FQn">
+            <objects>
+                <viewController storyboardIdentifier="TertitaryPositionCategoryViewController" id="3CR-KU-rdm" customClass="TertitaryPositionCategoryViewController" customModule="QuickDemoTemplate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Dzm-t0-iaz">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dt1-5Q-ehr" customClass="CollectionView" customModule="QuickDemoTemplate" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gm2-Xa-48C"/>
+                        <color key="backgroundColor" name="system_gray6"/>
+                        <constraints>
+                            <constraint firstItem="gm2-Xa-48C" firstAttribute="trailing" secondItem="Dt1-5Q-ehr" secondAttribute="trailing" id="J17-Xs-RmN"/>
+                            <constraint firstItem="gm2-Xa-48C" firstAttribute="bottom" secondItem="Dt1-5Q-ehr" secondAttribute="bottom" id="NmZ-wK-VgG"/>
+                            <constraint firstItem="Dt1-5Q-ehr" firstAttribute="top" secondItem="gm2-Xa-48C" secondAttribute="top" id="gL4-27-Whr"/>
+                            <constraint firstItem="Dt1-5Q-ehr" firstAttribute="leading" secondItem="gm2-Xa-48C" secondAttribute="leading" id="yoq-Fe-9fj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="Dt1-5Q-ehr" id="iic-vF-dZq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qxp-gp-mbx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1709" y="5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="system_gray6">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
