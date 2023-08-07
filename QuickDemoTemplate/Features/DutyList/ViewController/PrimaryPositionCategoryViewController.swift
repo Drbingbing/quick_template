@@ -11,8 +11,9 @@ import UIKit
 
 class PrimaryPositionCategoryViewController: UIViewController {
     
-    static func instantiate(with rows: [PositionCategorySelectableRow]) -> PrimaryPositionCategoryViewController {
+    static func instantiate(with rows: [PositionCategorySelectableRow], displayAll: Bool = false) -> PrimaryPositionCategoryViewController {
         let vc = Storyboard.positionCategory.instantiate(PrimaryPositionCategoryViewController.self)
+        vc.reactor = PositionCategoryReactor(displayAll: displayAll, tertitaryRows: [])
         vc.dataSource.data = rows
         return vc
     }
@@ -63,14 +64,15 @@ class PrimaryPositionCategoryViewController: UIViewController {
                             layout: RowLayout("label", alignItems: .center).inset(8)
                         ) {
                             LabelProvider(identifier: "label", text: data.params.title, width: .fill)
-                            if self.reactor.primaryRows.contains(data.params) {
+                            if let selectedCount = self.calculateSelectedCount(at: at) {
                                 SpaceProvider(width: 4)
-                                LabelProvider(text: "\(self.calculateSelectedCount(at: at))", color: .white, font: .systemFont(ofSize: 12))
+                                LabelProvider(text: "\(selectedCount)", color: .white, font: .systemFont(ofSize: 12))
                                     .background(UIColor(hexString: "FFA8A9"))
                                     .cornerRadius(8)
                                     .size(width: .absolute(16), height: .absolute(16))
                                     .alignment(.center)
                                     .padding(2)
+                                    .adjustsFontSizeToFitWidth(true)
                                 SpaceProvider(width: 6)
                             }
                             ImageProvider(name: "icon_arrow_right_8")
@@ -91,7 +93,7 @@ class PrimaryPositionCategoryViewController: UIViewController {
                     animator: AnimatedReloadAnimator(),
                     tapHandler: { context in
                         let vc = SecondaryPositionCategoryViewController.instantiate(with: context.data, reactor: self.reactor) { reactor in
-                            self.updateReactor(from: reactor, at: context.index)
+                            self.reactor = reactor
                         }
                         context.view.push(vc)
                     }
@@ -101,30 +103,15 @@ class PrimaryPositionCategoryViewController: UIViewController {
         
     }
     
-    private func updateReactor(from newReactor: PositionCategoryReactor, at atIndex: Int) {
-        let data = dataSource.data(at: atIndex)
-        var reactor = newReactor
-        if let child = data.params.child {
-            if reactor.secondaryRows.isSubset(of: child) {
-                reactor.primaryRows.insert(data.params)
-            }
-        }
-        self.reactor = reactor
-    }
-    
-    private func calculateSelectedCount(at atIndex: Int) -> Int {
+    private func calculateSelectedCount(at atIndex: Int) -> Int? {
         let data = dataSource.data(at: atIndex)
         
-        if reactor.primaryRows.contains(data.params) {
-            var total = 0
-            for secondaryRow in reactor.secondaryRows {
-                total += reactor.tertitaryRows.count(where: { secondaryRow.child!.contains($0) })
+        var total = 0
+        for tertitaryRow in reactor.tertitaryRows {
+            if tertitaryRow.code - data.params.code < 1000, tertitaryRow.code - data.params.code > 0 {
+                total += 1
             }
-            return total
         }
-        return 0
-//        guard let secondaryIndex = reactor.secondaryRowAt, let primaryIndex = reactor.primaryRowAt else { return 0 }
-//        guard let primaryChild = dataSource.data[primaryIndex].params.child, let secondaryChild = primaryChild[secondaryIndex].child else { return 0 }
-//        return reactor.tertitaryRows.filter { secondaryChild.contains($0) }.count
+        return total > 0 ? total : nil
     }
 }

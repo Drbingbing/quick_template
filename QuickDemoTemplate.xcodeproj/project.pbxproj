@@ -33,7 +33,6 @@
 		30051B3B2A720D64006DE8B7 /* CheckboxColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30051B292A720D64006DE8B7 /* CheckboxColorTheme.swift */; };
 		30051B3C2A720D64006DE8B7 /* CheckBoxDisplayableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30051B2B2A720D64006DE8B7 /* CheckBoxDisplayableView.swift */; };
 		30051B3D2A720D64006DE8B7 /* CheckboxEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30051B2C2A720D64006DE8B7 /* CheckboxEngine.swift */; };
-		30051B402A72413C006DE8B7 /* PositionCategoryViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30051B3F2A72413C006DE8B7 /* PositionCategoryViewModelProtocol.swift */; };
 		30051B422A726440006DE8B7 /* SecondaryPositionCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30051B412A726440006DE8B7 /* SecondaryPositionCategoryViewController.swift */; };
 		30051B452A7270B2006DE8B7 /* PositionCategoryViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30051B442A7270B2006DE8B7 /* PositionCategoryViewHeader.swift */; };
 		30051B472A72714B006DE8B7 /* TertitaryPositionCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30051B462A72714B006DE8B7 /* TertitaryPositionCategoryViewController.swift */; };
@@ -219,7 +218,6 @@
 		30051B292A720D64006DE8B7 /* CheckboxColorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxColorTheme.swift; sourceTree = "<group>"; };
 		30051B2B2A720D64006DE8B7 /* CheckBoxDisplayableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBoxDisplayableView.swift; sourceTree = "<group>"; };
 		30051B2C2A720D64006DE8B7 /* CheckboxEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxEngine.swift; sourceTree = "<group>"; };
-		30051B3F2A72413C006DE8B7 /* PositionCategoryViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionCategoryViewModelProtocol.swift; sourceTree = "<group>"; };
 		30051B412A726440006DE8B7 /* SecondaryPositionCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryPositionCategoryViewController.swift; sourceTree = "<group>"; };
 		30051B442A7270B2006DE8B7 /* PositionCategoryViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionCategoryViewHeader.swift; sourceTree = "<group>"; };
 		30051B462A72714B006DE8B7 /* TertitaryPositionCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TertitaryPositionCategoryViewController.swift; sourceTree = "<group>"; };
@@ -497,7 +495,6 @@
 		30051B3E2A724132006DE8B7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				30051B3F2A72413C006DE8B7 /* PositionCategoryViewModelProtocol.swift */,
 				3083C9EA2A7C922F005F78B4 /* PositionCategoryReactor.swift */,
 			);
 			path = ViewModel;
@@ -1176,7 +1173,6 @@
 				3011ABAF2A4AC21800801CD7 /* Animator.swift in Sources */,
 				30D0EF1C2A68CEC9006301D2 /* Extension+SimpleViewProvider.swift in Sources */,
 				30051B302A720D64006DE8B7 /* CheckboxAnimation.swift in Sources */,
-				30051B402A72413C006DE8B7 /* PositionCategoryViewModelProtocol.swift in Sources */,
 				3011ABB92A4AC22B00801CD7 /* EmptyStateProvider.swift in Sources */,
 				30D0EF0B2A64D7F9006301D2 /* AppEnvironment.swift in Sources */,
 				3011AB9C2A4AC1FE00801CD7 /* WrapperLayout.swift in Sources */,

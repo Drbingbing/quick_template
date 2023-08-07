@@ -10,12 +10,8 @@ import Foundation
 struct PositionCategorySelectableRow: Hashable {
     
     let params: CodeJsonParams
-    let primaryParams: CodeJsonParams?
-    let secondaryParams: CodeJsonParams?
     
-    init(params: CodeJsonParams, primaryParams: CodeJsonParams? = nil, secondaryParams: CodeJsonParams? = nil) {
+    init(params: CodeJsonParams) {
         self.params = params
-        self.primaryParams = primaryParams
-        self.secondaryParams = secondaryParams
     }
 }

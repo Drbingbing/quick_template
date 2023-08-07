@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwifterSwift
 
 class TertitaryPositionCategoryViewController: UIViewController {
     
@@ -15,7 +16,11 @@ class TertitaryPositionCategoryViewController: UIViewController {
         reactorDidChange: ((PositionCategoryReactor) -> Void)? = nil
     ) -> TertitaryPositionCategoryViewController {
         let vc = Storyboard.positionCategory.instantiate(TertitaryPositionCategoryViewController.self)
-        vc.dataSource.data = row.params.child?.map { PositionCategorySelectableRow(params: $0, primaryParams: row.primaryParams, secondaryParams: row.params) } ?? []
+        var data = row.params.child?.map { PositionCategorySelectableRow(params: $0) } ?? []
+        if reactor.displayAll {
+            data.prepend(PositionCategorySelectableRow(params: row.params))
+        }
+        vc.dataSource.data = data
         vc.navigationItem.title = row.params.title
         vc.reactor = reactor
         vc.reactorUpdateHandler = reactorDidChange
@@ -24,7 +29,9 @@ class TertitaryPositionCategoryViewController: UIViewController {
     
     let dataSource = ArrayDataSource<PositionCategorySelectableRow>(data: [])
     
-    var reactor = PositionCategoryReactor()
+    var reactor = PositionCategoryReactor() {
+        didSet { self.dataSource.reloadData() }
+    }
     
     private var reactorUpdateHandler: ((PositionCategoryReactor) -> Void)?
     
@@ -59,11 +66,9 @@ class TertitaryPositionCategoryViewController: UIViewController {
                         view.contentView.provider = CompositionProvider(
                             layout: RowLayout("label", alignItems: .center).inset(8)
                         ) {
-                            if data.params.child == nil {
-                                CheckBoxProvider(checked: self.reactor.tertitaryRows.contains(data.params))
-                                SpaceProvider(width: 6)
-                            }
-                            LabelProvider(identifier: "label", text: data.params.title, width: .fill)
+                            CheckBoxProvider(checked: self.reactor.tertitaryRows.contains(data.params))
+                            SpaceProvider(width: 6)
+                            LabelProvider(identifier: "label", text: data.params.code % 100 == 0 ? data.params.title + "全部" : data.params.title, width: .fill)
                         }
                     },
                     sizeSource: { at, data, size in
@@ -82,8 +87,17 @@ class TertitaryPositionCategoryViewController: UIViewController {
                     tapHandler: { [weak self] context in
                         guard let self else { return }
                         
-                        self.reactor.tertitaryRows = self.reactor.tertitaryRows.symmetricDifference([context.data.params])
-                        self.dataSource.reloadData()
+                        if context.data.params.code % 100 == 0 {
+                            
+                            if self.reactor.tertitaryRows.contains(context.data.params) {
+                                self.reactor.tertitaryRows = []
+                            } else {
+                                self.reactor.tertitaryRows = [context.data.params]
+                            }
+                            
+                        } else {
+                            self.reactor.tertitaryRows = self.reactor.tertitaryRows.symmetricDifference([context.data.params])
+                        }
                         self.reactorUpdateHandler?(self.reactor)
                     }
                 )

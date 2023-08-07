@@ -66,6 +66,12 @@ class LabelProvider: SimpleViewProvider {
         view.inset = edge + view.inset
         return self
     }
+    
+    @discardableResult
+    func adjustsFontSizeToFitWidth(_ newValue: Bool) -> Self {
+        view.contentView.adjustsFontSizeToFitWidth = newValue
+        return self
+    }
 }
 
 struct PaddingPosition: OptionSet {

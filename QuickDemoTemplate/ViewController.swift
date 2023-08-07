@@ -139,7 +139,7 @@ struct ViewControllerData {
         case .resume:
             return ResumeViewController.instantiate()
         case .positionCategory:
-            return PrimaryPositionCategoryViewController.instantiate(with: DutyListDataGenerator.load())
+            return PrimaryPositionCategoryViewController.instantiate(with: DutyListDataGenerator.load(), displayAll: true)
         }
     }
 }

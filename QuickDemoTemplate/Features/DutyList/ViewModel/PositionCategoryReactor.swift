@@ -9,8 +9,11 @@ import Foundation
 
 struct PositionCategoryReactor {
     
-    var primaryRows: Set<CodeJsonParams> = []
-    var secondaryRows: Set<CodeJsonParams> = []
-    var tertitaryRows: Set<CodeJsonParams> = []
+    let displayAll: Bool
+    var tertitaryRows: Set<CodeJsonParams>
     
+    init(displayAll: Bool = false, tertitaryRows: Set<CodeJsonParams> = []) {
+        self.displayAll = displayAll
+        self.tertitaryRows = tertitaryRows
+    }
 }
