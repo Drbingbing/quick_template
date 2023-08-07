@@ -89,13 +89,19 @@ class TertitaryPositionCategoryViewController: UIViewController {
                         
                         var tertitaryRows: Set<PositionCategorySelectableRow> = []
                         
-                        if context.index == 0 {
+                        if context.index == 0, self.reactor.displayAll {
                             // all was selected
-                            let isContain = self.reactor.tertitaryRows.contains(context.data)
-                            
+                            if self.reactor.tertitaryRows.contains(context.data) {
+                                tertitaryRows = self.reactor.tertitaryRows.symmetricDifference([context.data])
+                            } else {
+                                tertitaryRows = self.reactor.tertitaryRows.filter { !$0.isSubsetSubset(of: context.data) }
+                                    .symmetricDifference([context.data])
+                            }
                             
                         } else {
-                            
+                            tertitaryRows = self.reactor.tertitaryRows.symmetricDifference([context.data])
+                            let subset = tertitaryRows.filter(\.isSecondaryRow).filter { $0.isParent(of: context.data) }
+                            tertitaryRows = tertitaryRows.subtracting(subset)
                         }
                         
                         self.reactor.tertitaryRows = tertitaryRows

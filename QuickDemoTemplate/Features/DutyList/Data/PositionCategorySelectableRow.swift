@@ -19,13 +19,23 @@ struct PositionCategorySelectableRow: Hashable {
 extension PositionCategorySelectableRow {
     
     func isSubset(of row: PositionCategorySelectableRow) -> Bool {
-        if params.code - row.params.code <= 1000, params.code - row.params.code >= 0 {
+        if params.code - row.params.code < 1000, params.code - row.params.code >= 0 {
             return true
         }
-        if params.code - row.params.code <= 100, params.code - row.params.code >= 0 {
+        return false
+    }
+    
+    func isSubsetSubset(of row: PositionCategorySelectableRow) -> Bool {
+        if params.code - row.params.code < 100, params.code - row.params.code >= 0 {
             return true
         }
-        
+        return false
+    }
+    
+    func isParent(of row: PositionCategorySelectableRow) -> Bool {
+        if params.code - row.params.code <= 0 {
+            return true
+        }
         return false
     }
     

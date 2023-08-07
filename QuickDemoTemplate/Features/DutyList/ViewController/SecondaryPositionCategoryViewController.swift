@@ -69,6 +69,7 @@ class SecondaryPositionCategoryViewController: UIViewController {
                                     .size(width: .absolute(16), height: .absolute(16))
                                     .alignment(.center)
                                     .padding(2)
+                                    .adjustsFontSizeToFitWidth(true)
                                 SpaceProvider(width: 6)
                             }
                             ImageProvider(name: "icon_arrow_right_8")
@@ -103,7 +104,7 @@ class SecondaryPositionCategoryViewController: UIViewController {
     private func calculateSelectedCount(at atIndex: Int) -> Int? {
         let data = dataSource.data(at: atIndex)
         
-        let total = reactor.tertitaryRows.reduce(0, { $0 + ($1.isSubset(of: data) ? 1 : 0) })
+        let total = reactor.tertitaryRows.reduce(0, { $0 + ($1.isSubsetSubset(of: data) ? 1 : 0) })
         
         return total > 0 ? total : nil
     }
