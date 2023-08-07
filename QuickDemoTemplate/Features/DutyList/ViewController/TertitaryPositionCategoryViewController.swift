@@ -66,7 +66,7 @@ class TertitaryPositionCategoryViewController: UIViewController {
                         view.contentView.provider = CompositionProvider(
                             layout: RowLayout("label", alignItems: .center).inset(8)
                         ) {
-                            CheckBoxProvider(checked: self.reactor.tertitaryRows.contains(data.params))
+                            CheckBoxProvider(checked: self.reactor.tertitaryRows.contains(data))
                             SpaceProvider(width: 6)
                             LabelProvider(identifier: "label", text: data.params.code % 100 == 0 ? data.params.title + "全部" : data.params.title, width: .fill)
                         }
@@ -87,17 +87,19 @@ class TertitaryPositionCategoryViewController: UIViewController {
                     tapHandler: { [weak self] context in
                         guard let self else { return }
                         
-                        if context.data.params.code % 100 == 0 {
+                        var tertitaryRows: Set<PositionCategorySelectableRow> = []
+                        
+                        if context.index == 0 {
+                            // all was selected
+                            let isContain = self.reactor.tertitaryRows.contains(context.data)
                             
-                            if self.reactor.tertitaryRows.contains(context.data.params) {
-                                self.reactor.tertitaryRows = []
-                            } else {
-                                self.reactor.tertitaryRows = [context.data.params]
-                            }
                             
                         } else {
-                            self.reactor.tertitaryRows = self.reactor.tertitaryRows.symmetricDifference([context.data.params])
+                            
                         }
+                        
+                        self.reactor.tertitaryRows = tertitaryRows
+                        
                         self.reactorUpdateHandler?(self.reactor)
                     }
                 )

@@ -103,13 +103,8 @@ class SecondaryPositionCategoryViewController: UIViewController {
     private func calculateSelectedCount(at atIndex: Int) -> Int? {
         let data = dataSource.data(at: atIndex)
         
-        var total = 0
-        for tertitaryRow in reactor.tertitaryRows {
-            if tertitaryRow.code - data.params.code < 99, tertitaryRow.code - data.params.code > 0 {
-                print(tertitaryRow.code, data.params.code)
-                total += 1
-            }
-        }
+        let total = reactor.tertitaryRows.reduce(0, { $0 + ($1.isSubset(of: data) ? 1 : 0) })
+        
         return total > 0 ? total : nil
     }
 }
