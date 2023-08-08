@@ -43,7 +43,7 @@ public class AnimatedReloadAnimator: Animator {
         if collectionView.isReloading, collectionView.hasReloaded, collectionView.bounds.intersects(frame) {
             
             let offsetTime: TimeInterval = TimeInterval(frame.origin.distance(collectionView.contentOffset) / 3000)
-            view.layer.transform = .identity.scaleBy(0.8).translateY(-50)
+            view.layer.transform = Self.defaultEntryTransform
             view.alpha = 0
             
             UIView.animate(

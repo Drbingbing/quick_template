@@ -13,6 +13,8 @@ class PositionCategoryViewHeader: BaseView {
     let collectionView = CollectionView()
     let searchBar = UISearchBar()
     
+    var maxSelectableCount = 0
+    
     override func viewDidLoad() {
         addSubview(collectionView)
         backgroundColor = .systemGray6
@@ -25,7 +27,7 @@ class PositionCategoryViewHeader: BaseView {
         collectionView.frame = bounds
     }
     
-    func populate(data: Set<PositionCategorySelectableRow>, isExpand: Bool, onExpand: (() -> Void)? = nil) {
+    func populate(data: Set<PositionCategorySelectableRow>, isExpand: Bool, onExpand: (() -> Void)? = nil, onDelete: ((PositionCategorySelectableRow) -> Void)? = nil) {
         collectionView.provider = CompositionProvider(
             layout: FlowLayout().inset(left: 16, right: 16)
         ) {
@@ -33,18 +35,19 @@ class PositionCategoryViewHeader: BaseView {
             CompositionProvider(
                 layout: RowLayout("title").inset(left: 8, right: 8)
             ) {
-                LabelProvider(identifier: "title", text: "已選取 1/10 項", color: .systemGray4, font: .qt_body(size: 12))
+                LabelProvider(identifier: "title", text: "已選取 \(data.count)\(maxSelectableCount > 0 ? "/" + maxSelectableCount.string : "") 項", color: .systemGray4, font: .qt_body(size: 12))
                 CompositionProvider(
                     layout: FlowLayout(spacing: 2, alignItems: .center)
                 ) {
-                    LabelProvider(text: "展開", color: .systemGray4, font: .qt_body(size: 12))
+                    LabelProvider(text: isExpand ? "收合" : "展開", color: .systemGray4, font: .qt_body(size: 12))
                     ImageProvider(name: isExpand ? "polygon_up" : "polygon_down")
                 }
                 .tappable(onExpand)
             }
             if isExpand {
                 CompositionProvider(
-                    layout: FlowLayout(spacing: 8).inset(left: 8, right: 8)
+                    layout: FlowLayout(spacing: 8).inset(left: 8, right: 8),
+                    animator: AnimatedReloadAnimator()
                 ) {
                     SpaceProvider(height: 4)
                     for datum in data {
@@ -65,6 +68,9 @@ class PositionCategoryViewHeader: BaseView {
                             }
                             .badgeSize(width: 10, height: 10)
                             .badgeColor(.red2)
+                            .onTap { context in
+                                onDelete?(datum)
+                            }
                         }
                     }
                     SpaceProvider(height: 4)

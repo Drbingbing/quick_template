@@ -20,17 +20,32 @@ class TertitaryPositionCategoryViewController: UIViewController {
         if reactor.displayAll {
             data.prepend(PositionCategorySelectableRow(params: row.params))
         }
-        vc.dataSource.data = data
+        vc.reactor = PositionCategoryReactor(
+            displayAll: reactor.displayAll,
+            maxSelectableCount: reactor.maxSelectableCount,
+            dataSource: data,
+            tertitaryRows: reactor.tertitaryRows
+        )
         vc.navigationItem.title = row.params.title
-        vc.reactor = reactor
         vc.reactorUpdateHandler = reactorDidChange
         return vc
     }
     
     let dataSource = ArrayDataSource<PositionCategorySelectableRow>(data: [])
     
-    var reactor = PositionCategoryReactor() {
-        didSet { self.dataSource.reloadData() }
+    var reactor = PositionCategoryReactor(dataSource: []) {
+        didSet {
+            dataSource.data = reactor.dataSource
+            reactor.alertNotifications = { [weak self] reactor in
+                guard let self = self else { return }
+                let alert = UIAlertController(title: "提示", message: "最多只能選\(reactor.maxSelectableCount)個喔!", defaultActionButtonTitle: "確定")
+                self.present(alert, animated: true)
+            }
+        }
+    }
+    
+    private var isExpand: Bool = false {
+        didSet { dataSource.reloadData() }
     }
     
     private var reactorUpdateHandler: ((PositionCategoryReactor) -> Void)?
@@ -46,13 +61,26 @@ class TertitaryPositionCategoryViewController: UIViewController {
     override func bindingUI() {
         
         collectionView.provider = ComposedHeaderProvider(
-            headerViewSource: { (view: PositionCategoryViewHeader, data: HeaderData, at: Int) in
-                view.populate(data: [], isExpand: false)
+            headerViewSource: { [weak self] (view: PositionCategoryViewHeader, data: HeaderData, at: Int) in
+                guard let self else { return }
+                view.maxSelectableCount = self.reactor.maxSelectableCount
+                view.searchBar.delegate = self
+                view.populate(
+                    data: self.reactor.tertitaryRows,
+                    isExpand: self.isExpand,
+                    onExpand: { self.isExpand.toggle() },
+                    onDelete: { row in
+                        self.reactor.tertitaryRows.remove(row)
+                        self.dataSource.reloadData()
+                        self.reactorUpdateHandler?(self.reactor)
+                    }
+                )
             },
-            headerSizeSource: { _, _, size in
+            headerSizeSource: { [weak self] _, _, size in
+                guard let self = self else { return .zero }
                 return PositionCategoryViewHeader.sizeFor(
-                    data: [],
-                    isExpand: false,
+                    data: self.reactor.tertitaryRows,
+                    isExpand: self.isExpand,
                     maxWidth: size.width
                 )
             },
@@ -87,29 +115,26 @@ class TertitaryPositionCategoryViewController: UIViewController {
                     tapHandler: { [weak self] context in
                         guard let self else { return }
                         
-                        var tertitaryRows: Set<PositionCategorySelectableRow> = []
-                        
-                        if context.index == 0, self.reactor.displayAll {
-                            // all was selected
-                            if self.reactor.tertitaryRows.contains(context.data) {
-                                tertitaryRows = self.reactor.tertitaryRows.symmetricDifference([context.data])
-                            } else {
-                                tertitaryRows = self.reactor.tertitaryRows.filter { !$0.isSubsetSubset(of: context.data) }
-                                    .symmetricDifference([context.data])
-                            }
-                            
-                        } else {
-                            tertitaryRows = self.reactor.tertitaryRows.symmetricDifference([context.data])
-                            let subset = tertitaryRows.filter(\.isSecondaryRow).filter { $0.isParent(of: context.data) }
-                            tertitaryRows = tertitaryRows.subtracting(subset)
-                        }
-                        
-                        self.reactor.tertitaryRows = tertitaryRows
-                        
+                        self.reactor.didSelectRow(at: context.index, with: context.data)
+                        self.dataSource.data = reactor.dataSource
                         self.reactorUpdateHandler?(self.reactor)
                     }
                 )
             ]
         )
+    }
+}
+
+extension TertitaryPositionCategoryViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            dataSource.data = reactor.dataSource
+            return
+        }
+        
+        let all = reactor.dataSource.map(\.params)
+            
+        let result = all.filter { $0.title.contains(searchText) }.map { PositionCategorySelectableRow(params: $0) }
+        dataSource.data = result
     }
 }
