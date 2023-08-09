@@ -7,6 +7,7 @@
 
 import UIKit
 
+@dynamicMemberLookup
 class LabelProvider: SimpleViewProvider {
     
     var view: TappableView<UILabel> {
@@ -37,6 +38,21 @@ class LabelProvider: SimpleViewProvider {
             layout: FlowLayout(),
             tapHandler: tapHandler
         )
+    }
+    
+    subscript<Value>(dynamicMember keyPath: ReferenceWritableKeyPath<UILabel, Value>) -> (Value) -> LabelProvider {
+        return { self.with(keyPath, $0) }
+    }
+    
+    func with<Value>(_ keyPath: ReferenceWritableKeyPath<UILabel, Value>, _ value: Value) -> Self {
+        view.contentView[keyPath: keyPath] = value
+        return self
+    }
+    
+    @discardableResult
+    func update(_ update: @escaping (UILabel) -> Void) -> Self {
+        update(view.contentView)
+        return self
     }
     
     @discardableResult

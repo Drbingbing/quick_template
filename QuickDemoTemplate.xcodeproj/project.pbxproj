@@ -109,6 +109,10 @@
 		3011ABD72A4C2C8300801CD7 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3011ABD62A4C2C8300801CD7 /* SnapKit */; };
 		30798D232A60F73E00AEE76E /* MessageContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30798D222A60F73E00AEE76E /* MessageContainerView.swift */; };
 		3083C9EB2A7C922F005F78B4 /* PositionCategoryReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3083C9EA2A7C922F005F78B4 /* PositionCategoryReactor.swift */; };
+		3083C9EE2A81D5F2005F78B4 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 3083C9ED2A81D5F2005F78B4 /* FloatingPanel */; };
+		3083C9F22A81DF90005F78B4 /* BottomSheetPanelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3083C9F12A81DF90005F78B4 /* BottomSheetPanelLayout.swift */; };
+		3083C9F52A81E181005F78B4 /* BottomSheetFloatingPanelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3083C9F42A81E181005F78B4 /* BottomSheetFloatingPanelStyle.swift */; };
+		3083C9F82A81E995005F78B4 /* BottomSheetContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3083C9F72A81E995005F78B4 /* BottomSheetContentViewController.swift */; };
 		309B75E12A7A25CB00C1D004 /* SwifterSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 309B75E02A7A25CB00C1D004 /* SwifterSwift */; };
 		309B75E32A7A59C000C1D004 /* IconProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309B75E22A7A59C000C1D004 /* IconProvider.swift */; };
 		30C8B9B22A4D0FAC003D73FA /* Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C8B9AF2A4D0FAC003D73FA /* Nib.swift */; };
@@ -298,6 +302,9 @@
 		3011ABD12A4BBC5800801CD7 /* Extension+UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
 		30798D222A60F73E00AEE76E /* MessageContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageContainerView.swift; sourceTree = "<group>"; };
 		3083C9EA2A7C922F005F78B4 /* PositionCategoryReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionCategoryReactor.swift; sourceTree = "<group>"; };
+		3083C9F12A81DF90005F78B4 /* BottomSheetPanelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetPanelLayout.swift; sourceTree = "<group>"; };
+		3083C9F42A81E181005F78B4 /* BottomSheetFloatingPanelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetFloatingPanelStyle.swift; sourceTree = "<group>"; };
+		3083C9F72A81E995005F78B4 /* BottomSheetContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetContentViewController.swift; sourceTree = "<group>"; };
 		309B75E22A7A59C000C1D004 /* IconProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconProvider.swift; sourceTree = "<group>"; };
 		30C8B9AF2A4D0FAC003D73FA /* Nib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nib.swift; sourceTree = "<group>"; };
 		30C8B9B12A4D0FAC003D73FA /* Stoaryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stoaryboard.swift; sourceTree = "<group>"; };
@@ -343,6 +350,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3083C9EE2A81D5F2005F78B4 /* FloatingPanel in Frameworks */,
 				30D0EF222A6E6DCD006301D2 /* YetAnotherAnimationLibrary in Frameworks */,
 				30051B002A7116D5006DE8B7 /* SwiftyJSON in Frameworks */,
 				30C8B9BE2A4D1A81003D73FA /* RxSwift in Frameworks */,
@@ -721,6 +729,7 @@
 		3011ABBC2A4AC91E00801CD7 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				3083C9EF2A81DBFE005F78B4 /* FloatingPanel */,
 				30051B122A720D64006DE8B7 /* AnimatableCheckbox */,
 				30D0EF072A64CDBA006301D2 /* AvatorView.swift */,
 				30C8B9D02A5258A5003D73FA /* Providers */,
@@ -768,6 +777,40 @@
 				30D0EF052A64CCCE006301D2 /* TextMessageView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		3083C9EF2A81DBFE005F78B4 /* FloatingPanel */ = {
+			isa = PBXGroup;
+			children = (
+				3083C9F62A81E95B005F78B4 /* ViewControllers */,
+				3083C9F32A81E008005F78B4 /* SurfaceStyle */,
+				3083C9F02A81DC10005F78B4 /* Layout */,
+			);
+			path = FloatingPanel;
+			sourceTree = "<group>";
+		};
+		3083C9F02A81DC10005F78B4 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				3083C9F12A81DF90005F78B4 /* BottomSheetPanelLayout.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		3083C9F32A81E008005F78B4 /* SurfaceStyle */ = {
+			isa = PBXGroup;
+			children = (
+				3083C9F42A81E181005F78B4 /* BottomSheetFloatingPanelStyle.swift */,
+			);
+			path = SurfaceStyle;
+			sourceTree = "<group>";
+		};
+		3083C9F62A81E95B005F78B4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3083C9F72A81E995005F78B4 /* BottomSheetContentViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		30C8B9AE2A4D0FAC003D73FA /* Nib */ = {
@@ -969,6 +1012,7 @@
 				30D0EF212A6E6DCD006301D2 /* YetAnotherAnimationLibrary */,
 				30051AFF2A7116D5006DE8B7 /* SwiftyJSON */,
 				309B75E02A7A25CB00C1D004 /* SwifterSwift */,
+				3083C9ED2A81D5F2005F78B4 /* FloatingPanel */,
 			);
 			productName = QuickDemoTemplate;
 			productReference = 3011AAF52A4ABF5000801CD7 /* QuickDemoTemplate.app */;
@@ -1072,6 +1116,7 @@
 				30D0EF202A6E6DCD006301D2 /* XCRemoteSwiftPackageReference "YetAnotherAnimationLibrary" */,
 				30051AFE2A7116D5006DE8B7 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				309B75DF2A7A25CB00C1D004 /* XCRemoteSwiftPackageReference "SwifterSwift" */,
+				3083C9EC2A81D5F2005F78B4 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
 			);
 			productRefGroup = 3011AAF62A4ABF5000801CD7 /* Products */;
 			projectDirPath = "";
@@ -1197,7 +1242,9 @@
 				30051B2F2A720D64006DE8B7 /* AnimatableCheckbox.swift in Sources */,
 				3011AB962A4AC1FE00801CD7 /* LayoutContext.swift in Sources */,
 				3011AB9B2A4AC1FE00801CD7 /* InsetLayout.swift in Sources */,
+				3083C9F82A81E995005F78B4 /* BottomSheetContentViewController.swift in Sources */,
 				3011AB8A2A4AC1F400801CD7 /* DataSource.swift in Sources */,
+				3083C9F52A81E181005F78B4 /* BottomSheetFloatingPanelStyle.swift in Sources */,
 				3011ABA52A4AC20800801CD7 /* FlattenedProvider.swift in Sources */,
 				30051B322A720D64006DE8B7 /* SelectBoxRenderNode.swift in Sources */,
 				30051B3C2A720D64006DE8B7 /* CheckBoxDisplayableView.swift in Sources */,
@@ -1213,6 +1260,7 @@
 				309B75E32A7A59C000C1D004 /* IconProvider.swift in Sources */,
 				3011ABA32A4AC20800801CD7 /* ComposedProvider.swift in Sources */,
 				30051B4B2A78931E006DE8B7 /* BadgeProvider.swift in Sources */,
+				3083C9F22A81DF90005F78B4 /* BottomSheetPanelLayout.swift in Sources */,
 				30CCF2BA2A54FA9300806520 /* UIEdgeInset.swift in Sources */,
 				30051B492A73A8A2006DE8B7 /* Extension+Provider.swift in Sources */,
 				30051B0B2A720292006DE8B7 /* PositionCategoryParams.swift in Sources */,
@@ -1672,6 +1720,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		3083C9EC2A81D5F2005F78B4 /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scenee/FloatingPanel.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.5;
+			};
+		};
 		309B75DF2A7A25CB00C1D004 /* XCRemoteSwiftPackageReference "SwifterSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwifterSwift/SwifterSwift.git";
@@ -1724,6 +1780,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3011ABD52A4C2C8300801CD7 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		3083C9ED2A81D5F2005F78B4 /* FloatingPanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3083C9EC2A81D5F2005F78B4 /* XCRemoteSwiftPackageReference "FloatingPanel" */;
+			productName = FloatingPanel;
 		};
 		309B75E02A7A25CB00C1D004 /* SwifterSwift */ = {
 			isa = XCSwiftPackageProductDependency;

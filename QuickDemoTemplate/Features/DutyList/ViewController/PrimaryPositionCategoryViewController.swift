@@ -8,10 +8,16 @@
 import SwiftyJSON
 import SwifterSwift
 import UIKit
+import FloatingPanel
 
 class PrimaryPositionCategoryViewController: UIViewController {
     
-    static func instantiate(with rows: [PositionCategorySelectableRow], displayAll: Bool = false, maxSelectableCount: Int = 0) -> PrimaryPositionCategoryViewController {
+    static func instantiate(
+        with rows: [PositionCategorySelectableRow],
+        displayAll: Bool = false,
+        maxSelectableCount: Int = 0,
+        reactorDidApply: ((PositionCategoryReactor) -> Void)? = nil
+    ) -> PrimaryPositionCategoryViewController {
         let vc = Storyboard.positionCategory.instantiate(PrimaryPositionCategoryViewController.self)
         vc.reactor = PositionCategoryReactor(
             displayAll: displayAll,
@@ -19,6 +25,7 @@ class PrimaryPositionCategoryViewController: UIViewController {
             dataSource: rows,
             tertitaryRows: []
         )
+        vc.applyReactorHandler = reactorDidApply
         return vc
     }
     
@@ -37,6 +44,9 @@ class PrimaryPositionCategoryViewController: UIViewController {
     
     @IBOutlet weak var collectionView: CollectionView!
     
+    private let fpc = FloatingPanelController()
+    private var applyReactorHandler: ((PositionCategoryReactor) -> Void)?
+    
     private var isExpand: Bool = false {
         didSet { dataSource.reloadData() }
     }
@@ -51,7 +61,40 @@ class PrimaryPositionCategoryViewController: UIViewController {
         navigationItem.title = "職務類別"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
+        let contentVC = BottomSheetContentViewController()
+        contentVC.provider = CompositionProvider(
+            layout: RowLayout("left", "right", justifyContent: .spaceEvenly, alignItems: .center)
+        ) {
+            LabelProvider(identifier: "left", text: "重新選取")
+                .size(width: .fill)
+                .textAlignment(.center)
+                .font(.qt_body().bold)
+                .onTap { [weak self] _ in
+                    guard let self = self else { return }
+                    self.reactor.removeAllTertitaryRows()
+                    self.dataSource.reloadData()
+                }
+            LabelProvider(identifier: "right", text: "儲存條件")
+                .size(width: .fill)
+                .textAlignment(.center)
+                .font(.qt_body().bold)
+                .onTap { [weak self] _ in
+                    guard let self = self else { return }
+                    self.navigationController?.popViewController(animated: true)
+                    self.applyReactorHandler?(self.reactor)
+                }
+        }
+        
+        fpc.addPanel(toParent: self)
+        fpc.layout = BottomSheetPanelLayout()
+        fpc.panGestureRecognizer.isEnabled = false
+        fpc.surfaceView.appearance = BottomSheetFloatingPanelStyle(shadowOpacity: 0, backgroundColor: .clear, cornerRadius: 0).asSurfaceAppearance()
+        fpc.surfaceView.grabberHandle.alpha = 0
+        fpc.set(contentViewController: contentVC)
+        fpc.invalidateLayout()
+        
         collectionView.provider = ComposedHeaderProvider(
+            layout: FlowLayout().inset(bottom: 50),
             headerViewSource: { [weak self] (view: PositionCategoryViewHeader, data: HeaderData, at: Int) in
                 guard let self else { return }
                 view.maxSelectableCount = self.reactor.maxSelectableCount
@@ -59,10 +102,10 @@ class PrimaryPositionCategoryViewController: UIViewController {
                 view.populate(
                     data: self.reactor.tertitaryRows,
                     isExpand: self.isExpand,
-                    onExpand: { self.isExpand.toggle() },
-                    onDelete: { row in
-                        self.reactor.tertitaryRows.remove(row)
-                        self.dataSource.reloadData()
+                    onExpand: { [weak self] in self?.isExpand.toggle() },
+                    onDelete: { [weak self] row in
+                        self?.reactor.tertitaryRows.remove(row)
+                        self?.dataSource.reloadData()
                     }
                 )
             },
@@ -118,17 +161,29 @@ class PrimaryPositionCategoryViewController: UIViewController {
                     },
                     layout: FlowLayout().inset(left: 20, right: 20),
                     animator: AnimatedReloadAnimator(),
-                    tapHandler: { context in
+                    tapHandler: { [weak self] context in
+                        guard let self = self else { return }
                         if context.data.params.child == nil {
                             self.reactor.didSelectRow(at: context.index, with: context.data)
                             self.dataSource.reloadData()
                             return
                         }
-                        
-                        let vc = SecondaryPositionCategoryViewController.instantiate(with: context.data, reactor: self.reactor) { reactor in
-                            self.reactor.tertitaryRows = reactor.tertitaryRows
-                            self.dataSource.reloadData()
-                        }
+
+                        let vc = SecondaryPositionCategoryViewController.instantiate(
+                            with: context.data,
+                            reactor: self.reactor,
+                            reactorDidChange: { reactor in
+                                self.reactor.tertitaryRows = reactor.tertitaryRows
+                                self.dataSource.reloadData()
+                            },
+                            reactorDidApply: { reactor in
+                                self.reactor.tertitaryRows = reactor.tertitaryRows
+                                self.dataSource.reloadData()
+                                context.view.dismiss {
+                                    self.applyReactorHandler?(self.reactor)
+                                }
+                            }
+                        )
                         context.view.push(vc)
                     }
                 )

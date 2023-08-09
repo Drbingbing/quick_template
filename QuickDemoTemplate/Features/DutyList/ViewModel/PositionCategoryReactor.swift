@@ -51,4 +51,12 @@ class PositionCategoryReactor {
         
         self.tertitaryRows = tertitaryRows
     }
+    
+    func removeAllTertitaryRows() {
+        self.tertitaryRows = []
+    }
+    
+    func removeTertitaryRow(_ row: PositionCategorySelectableRow) {
+        tertitaryRows.remove(row)
+    }
 }

@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "floatingpanel",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/scenee/FloatingPanel.git",
+      "state" : {
+        "revision" : "b34f1093defc43027a99834c2135a4381f5c7592",
+        "version" : "2.6.5"
+      }
+    },
+    {
       "identity" : "hue",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/zenangst/Hue.git",

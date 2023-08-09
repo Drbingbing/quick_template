@@ -7,13 +7,15 @@
 
 import SwifterSwift
 import UIKit
+import FloatingPanel
 
 class SecondaryPositionCategoryViewController: UIViewController {
     
     static func instantiate(
         with row: PositionCategorySelectableRow,
         reactor: PositionCategoryReactor,
-        reactorDidChange: ((PositionCategoryReactor) -> Void)? = nil
+        reactorDidChange: ((PositionCategoryReactor) -> Void)? = nil,
+        reactorDidApply: ((PositionCategoryReactor) -> Void)? = nil
     ) -> SecondaryPositionCategoryViewController {
         let vc = Storyboard.positionCategory.instantiate(SecondaryPositionCategoryViewController.self)
         let dataSource = row.params.child?.map { PositionCategorySelectableRow(params: $0) } ?? []
@@ -25,6 +27,7 @@ class SecondaryPositionCategoryViewController: UIViewController {
             tertitaryRows: reactor.tertitaryRows
         )
         vc.reactorUpdateHandler = reactorDidChange
+        vc.applyReactorHandler = reactorDidApply
         return vc
     }
     
@@ -46,6 +49,9 @@ class SecondaryPositionCategoryViewController: UIViewController {
     }
     
     private var reactorUpdateHandler: ((PositionCategoryReactor) -> Void)?
+    private var applyReactorHandler: ((PositionCategoryReactor) -> Void)?
+    
+    private let fpc = FloatingPanelController()
     
     @IBOutlet weak var collectionView: CollectionView!
     
@@ -58,7 +64,41 @@ class SecondaryPositionCategoryViewController: UIViewController {
     override func bindingUI() {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
+        let contentVC = BottomSheetContentViewController()
+        contentVC.provider = CompositionProvider(
+            layout: RowLayout("left", "right", justifyContent: .spaceEvenly, alignItems: .center)
+        ) {
+            LabelProvider(identifier: "left", text: "重新選取")
+                .size(width: .fill)
+                .textAlignment(.center)
+                .font(.qt_body().bold)
+                .onTap { [weak self] _ in
+                    guard let self = self else { return }
+                    self.reactor.removeAllTertitaryRows()
+                    self.dataSource.reloadData()
+                    self.reactorUpdateHandler?(self.reactor)
+                }
+            LabelProvider(identifier: "right", text: "儲存條件")
+                .size(width: .fill)
+                .textAlignment(.center)
+                .font(.qt_body().bold)
+                .onTap { [weak self] _ in
+                    guard let self = self else { return }
+                    self.navigationController?.popViewController(animated: false)
+                    self.applyReactorHandler?(self.reactor)
+                }
+        }
+        
+        fpc.addPanel(toParent: self)
+        fpc.layout = BottomSheetPanelLayout()
+        fpc.panGestureRecognizer.isEnabled = false
+        fpc.surfaceView.appearance = BottomSheetFloatingPanelStyle(shadowOpacity: 0, backgroundColor: .clear, cornerRadius: 0).asSurfaceAppearance()
+        fpc.surfaceView.grabberHandle.alpha = 0
+        fpc.set(contentViewController: contentVC)
+        fpc.invalidateLayout()
+        
         collectionView.provider = ComposedHeaderProvider(
+            layout: FlowLayout().inset(bottom: 50),
             headerViewSource: { [weak self] (view: PositionCategoryViewHeader, data: HeaderData, at: Int) in
                 guard let self else { return }
                 view.maxSelectableCount = self.reactor.maxSelectableCount
@@ -66,9 +106,10 @@ class SecondaryPositionCategoryViewController: UIViewController {
                 view.populate(
                     data: self.reactor.tertitaryRows,
                     isExpand: self.isExpand,
-                    onExpand: { self.isExpand.toggle() },
-                    onDelete: { row in
-                        self.reactor.tertitaryRows.remove(row)
+                    onExpand: { [weak self] in self?.isExpand.toggle() },
+                    onDelete: { [weak self] row in
+                        guard let self = self else { return }
+                        self.reactor.removeTertitaryRow(row)
                         self.dataSource.reloadData()
                         self.reactorUpdateHandler?(self.reactor)
                     }
@@ -133,11 +174,21 @@ class SecondaryPositionCategoryViewController: UIViewController {
                             return
                         }
                         
-                        let vc = TertitaryPositionCategoryViewController.instantiate(with: context.data, reactor: self.reactor) { reactor in
-                            self.reactor.tertitaryRows = reactor.tertitaryRows
-                            self.dataSource.reloadData()
-                            self.reactorUpdateHandler?(self.reactor)
-                        }
+                        let vc = TertitaryPositionCategoryViewController.instantiate(
+                            with: context.data,
+                            reactor: self.reactor,
+                            reactorDidChange: { reactor in
+                                self.reactor.tertitaryRows = reactor.tertitaryRows
+                                self.dataSource.reloadData()
+                                self.reactorUpdateHandler?(self.reactor)
+                            },
+                            reactorDidApply: { reactor in
+                                self.reactor.tertitaryRows = reactor.tertitaryRows
+                                self.dataSource.reloadData()
+                                self.navigationController?.popViewController(animated: false)
+                                self.applyReactorHandler?(self.reactor)
+                            }
+                        )
                         context.view.push(vc)
                     }
                 )
