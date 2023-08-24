@@ -11,6 +11,7 @@ enum Storyboard: String {
     case chat
     case resume
     case positionCategory
+    case dataBinding
     
     func instantiate<VC: UIViewController>(_: VC.Type, inBundle bundle: Bundle = .main) -> VC {
         guard let vc = UIStoryboard(name: self.rawValue.firstCapitalized, bundle: Bundle(identifier: bundle.identifier))

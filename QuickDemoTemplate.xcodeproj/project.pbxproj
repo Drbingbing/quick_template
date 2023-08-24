@@ -107,6 +107,11 @@
 		3011ABD02A4BBC1600801CD7 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3011ABCF2A4BBC1600801CD7 /* ChatViewController.swift */; };
 		3011ABD22A4BBC5800801CD7 /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3011ABD12A4BBC5800801CD7 /* Extension+UIViewController.swift */; };
 		3011ABD72A4C2C8300801CD7 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3011ABD62A4C2C8300801CD7 /* SnapKit */; };
+		30290BE22A960BB700982B42 /* MutableObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30290BE12A960BB700982B42 /* MutableObservable.swift */; };
+		30290BE42A960D5700982B42 /* Disposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30290BE32A960D5700982B42 /* Disposable.swift */; };
+		30290BE82A96DE4000982B42 /* DataBinding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30290BE72A96DE4000982B42 /* DataBinding.storyboard */; };
+		30290BEB2A96DE7900982B42 /* DataBindingSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30290BEA2A96DE7900982B42 /* DataBindingSampleViewController.swift */; };
+		30290BED2A96F82C00982B42 /* Observerable+Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30290BEC2A96F82C00982B42 /* Observerable+Property.swift */; };
 		30798D232A60F73E00AEE76E /* MessageContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30798D222A60F73E00AEE76E /* MessageContainerView.swift */; };
 		3083C9EB2A7C922F005F78B4 /* PositionCategoryReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3083C9EA2A7C922F005F78B4 /* PositionCategoryReactor.swift */; };
 		3083C9EE2A81D5F2005F78B4 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 3083C9ED2A81D5F2005F78B4 /* FloatingPanel */; };
@@ -300,6 +305,11 @@
 		3011ABCB2A4AD0C900801CD7 /* Extension+UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIFont.swift"; sourceTree = "<group>"; };
 		3011ABCF2A4BBC1600801CD7 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		3011ABD12A4BBC5800801CD7 /* Extension+UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
+		30290BE12A960BB700982B42 /* MutableObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutableObservable.swift; sourceTree = "<group>"; };
+		30290BE32A960D5700982B42 /* Disposable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disposable.swift; sourceTree = "<group>"; };
+		30290BE72A96DE4000982B42 /* DataBinding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DataBinding.storyboard; sourceTree = "<group>"; };
+		30290BEA2A96DE7900982B42 /* DataBindingSampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBindingSampleViewController.swift; sourceTree = "<group>"; };
+		30290BEC2A96F82C00982B42 /* Observerable+Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observerable+Property.swift"; sourceTree = "<group>"; };
 		30798D222A60F73E00AEE76E /* MessageContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageContainerView.swift; sourceTree = "<group>"; };
 		3083C9EA2A7C922F005F78B4 /* PositionCategoryReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionCategoryReactor.swift; sourceTree = "<group>"; };
 		3083C9F12A81DF90005F78B4 /* BottomSheetPanelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetPanelLayout.swift; sourceTree = "<group>"; };
@@ -541,6 +551,7 @@
 		3011AAF72A4ABF5000801CD7 /* QuickDemoTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				30290BE02A960B5300982B42 /* MutableObservable */,
 				30051AFB2A71054B006DE8B7 /* jsons */,
 				30D0EF092A64D5C9006301D2 /* Libarary */,
 				30C8B9C12A4D68A5003D73FA /* model */,
@@ -751,6 +762,7 @@
 		3011ABCD2A4BBBFD00801CD7 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				30290BE52A96DDD800982B42 /* DataBinding */,
 				30D0EF312A70CECF006301D2 /* DutyList */,
 				30D0EF0E2A64E391006301D2 /* Resume */,
 				3011ABCE2A4BBC0800801CD7 /* Chat */,
@@ -768,6 +780,41 @@
 				30C8B9B42A4D0FBF003D73FA /* Storyboard */,
 			);
 			path = Chat;
+			sourceTree = "<group>";
+		};
+		30290BE02A960B5300982B42 /* MutableObservable */ = {
+			isa = PBXGroup;
+			children = (
+				30290BE12A960BB700982B42 /* MutableObservable.swift */,
+				30290BE32A960D5700982B42 /* Disposable.swift */,
+				30290BEC2A96F82C00982B42 /* Observerable+Property.swift */,
+			);
+			path = MutableObservable;
+			sourceTree = "<group>";
+		};
+		30290BE52A96DDD800982B42 /* DataBinding */ = {
+			isa = PBXGroup;
+			children = (
+				30290BE92A96DE6100982B42 /* ViewController */,
+				30290BE62A96DE3100982B42 /* Storyboard */,
+			);
+			path = DataBinding;
+			sourceTree = "<group>";
+		};
+		30290BE62A96DE3100982B42 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				30290BE72A96DE4000982B42 /* DataBinding.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		30290BE92A96DE6100982B42 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				30290BEA2A96DE7900982B42 /* DataBindingSampleViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		30798D212A60F72F00AEE76E /* View */ = {
@@ -1137,6 +1184,7 @@
 			files = (
 				3011AB052A4ABF5200801CD7 /* LaunchScreen.storyboard in Resources */,
 				30D0EF112A64E3AC006301D2 /* Resume.storyboard in Resources */,
+				30290BE82A96DE4000982B42 /* DataBinding.storyboard in Resources */,
 				30D0EF342A70CEEE006301D2 /* PositionCategory.storyboard in Resources */,
 				30051AFD2A71055B006DE8B7 /* duty_list.json in Resources */,
 				30C8B9B62A4D0FE1003D73FA /* Chat.storyboard in Resources */,
@@ -1258,6 +1306,7 @@
 				3011AB9A2A4AC1FE00801CD7 /* WaterfallLayout.swift in Sources */,
 				30051B342A720D64006DE8B7 /* CheckboxAnimater.swift in Sources */,
 				309B75E32A7A59C000C1D004 /* IconProvider.swift in Sources */,
+				30290BE42A960D5700982B42 /* Disposable.swift in Sources */,
 				3011ABA32A4AC20800801CD7 /* ComposedProvider.swift in Sources */,
 				30051B4B2A78931E006DE8B7 /* BadgeProvider.swift in Sources */,
 				3083C9F22A81DF90005F78B4 /* BottomSheetPanelLayout.swift in Sources */,
@@ -1280,6 +1329,7 @@
 				3011ABD02A4BBC1600801CD7 /* ChatViewController.swift in Sources */,
 				3011AB932A4AC1FE00801CD7 /* Layout.swift in Sources */,
 				30051B392A720D64006DE8B7 /* TickPathGenerator.swift in Sources */,
+				30290BEB2A96DE7900982B42 /* DataBindingSampleViewController.swift in Sources */,
 				3011ABB22A4AC22100801CD7 /* UIScrollView+CollectionKit.swift in Sources */,
 				3011ABA92A4AC20E00801CD7 /* SectionProvider.swift in Sources */,
 				30D0EF0D2A64D919006301D2 /* Environment.swift in Sources */,
@@ -1293,7 +1343,9 @@
 				30D0EF062A64CCCE006301D2 /* TextMessageView.swift in Sources */,
 				30C8B9DA2A529D20003D73FA /* MessageDataSource.swift in Sources */,
 				30C8B9D22A5258B7003D73FA /* ChatPreviewProvider.swift in Sources */,
+				30290BE22A960BB700982B42 /* MutableObservable.swift in Sources */,
 				30C8B9C52A4E6028003D73FA /* VisualEffectView.swift in Sources */,
+				30290BED2A96F82C00982B42 /* Observerable+Property.swift in Sources */,
 				30051B0D2A7209D3006DE8B7 /* CompositionProvider.swift in Sources */,
 				30D0EF372A70CF10006301D2 /* PrimaryPositionCategoryViewController.swift in Sources */,
 				30C8B9D82A529BFA003D73FA /* MockUser.swift in Sources */,

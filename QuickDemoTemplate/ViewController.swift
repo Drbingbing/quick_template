@@ -27,7 +27,8 @@ class ViewController: UIViewController {
         dataSource = [
             ViewControllerData(storyboard: .chat),
             ViewControllerData(storyboard: .resume),
-            ViewControllerData(storyboard: .positionCategory)
+            ViewControllerData(storyboard: .positionCategory),
+            ViewControllerData(storyboard: .dataBinding)
         ]
         
         collectionView.provider = CompositionProvider(
@@ -129,6 +130,8 @@ struct ViewControllerData {
             return ResumePreviewProvider()
         case .positionCategory:
             return ResumePreviewProvider()
+        case .dataBinding:
+            return ResumePreviewProvider()
         }
     }
     
@@ -140,6 +143,8 @@ struct ViewControllerData {
             return ResumeViewController.instantiate()
         case .positionCategory:
             return PrimaryPositionCategoryViewController.instantiate(with: DutyListDataGenerator.load(), displayAll: true, maxSelectableCount: 10)
+        case .dataBinding:
+            return DataBindingSampleViewController.instantiate()
         }
     }
 }

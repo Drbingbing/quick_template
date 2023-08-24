@@ -7,19 +7,30 @@
 
 import UIKit
 
-public class AnimatedReloadAnimator: Animator {
-    static let defaultEntryTransform: CATransform3D = CATransform3DTranslate(CATransform3DScale(CATransform3DIdentity, 0.8, 0.8, 1), 0, 0, -1)
-    static let fancyEntryTransform: CATransform3D = {
-        return .identity.scaleX(0.8).rotateX(0.5).translateX(-50).translateY(-100)
-    }()
+class AnimatedReloadAnimator: Animator {
+    var transform: CATransform3D
+    var duration: TimeInterval
+    var cascade: Bool
+
+    init(
+        transform: CATransform3D = CATransform3DIdentity,
+        duration: TimeInterval = 0.5,
+        cascade: Bool = false
+    ) {
+        self.transform = transform
+        self.duration = duration
+        self.cascade = cascade
+        super.init()
+    }
+
     
     public override func delete(collectionView: CollectionView, view: UIView) {
         if collectionView.isReloading, collectionView.bounds.intersects(view.frame) {
             
             UIView.animate(
-                withDuration: 0.25,
+                withDuration: duration,
                 animations: {
-                    view.layer.transform = .identity.scaleBy(0.8)
+                    view.layer.transform = self.transform
                     view.alpha = 0
                 },
                 completion: { _ in
@@ -43,13 +54,15 @@ public class AnimatedReloadAnimator: Animator {
         if collectionView.isReloading, collectionView.hasReloaded, collectionView.bounds.intersects(frame) {
             
             let offsetTime: TimeInterval = TimeInterval(frame.origin.distance(collectionView.contentOffset) / 3000)
-            view.layer.transform = Self.defaultEntryTransform
-            view.alpha = 0
+            UIView.performWithoutAnimation {
+                view.layer.transform = transform
+                view.alpha = 0
+            }
             
             UIView.animate(
-                withDuration: 0.5,
+                withDuration: duration,
                 delay: offsetTime,
-                usingSpringWithDamping: 0.8,
+                usingSpringWithDamping: 0.9,
                 initialSpringVelocity: 0,
                 options: [],
                 animations: {
@@ -65,11 +78,11 @@ public class AnimatedReloadAnimator: Animator {
         if view.center != frame.center {
             
             UIView.animate(
-                withDuration: 0.6,
+                withDuration: duration,
                 delay: 0,
                 usingSpringWithDamping: 0.9,
                 initialSpringVelocity: 0,
-                options: [.layoutSubviews],
+                options: [.allowUserInteraction],
                 animations: {
                     view.center = frame.center
                 }, completion: nil
@@ -80,11 +93,11 @@ public class AnimatedReloadAnimator: Animator {
         if view.bounds.size != frame.bounds.size {
             
             UIView.animate(
-                withDuration: 0.6,
+                withDuration: duration,
                 delay: 0,
                 usingSpringWithDamping: 0.9,
                 initialSpringVelocity: 0,
-                options: [.layoutSubviews],
+                options: [.allowUserInteraction, .layoutSubviews],
                 animations: {
                     view.bounds.size = frame.bounds.size
                 },
@@ -99,7 +112,7 @@ public class AnimatedReloadAnimator: Animator {
                 delay: 0,
                 usingSpringWithDamping: 0.9,
                 initialSpringVelocity: 0,
-                options: [],
+                options: [.allowUserInteraction],
                 animations: {
                     view.transform = .identity
                     view.alpha = 1
@@ -110,3 +123,4 @@ public class AnimatedReloadAnimator: Animator {
         }
     }
 }
+
