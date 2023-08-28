@@ -8,6 +8,7 @@
 import UIKit
 
 enum Storyboard: String {
+    case uiComponentSample
     case chat
     case resume
     case positionCategory

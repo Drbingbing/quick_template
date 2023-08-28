@@ -68,7 +68,7 @@ final class DataBindingSampleViewController: UIViewController {
     private var provider: Provider {
         CompositionProvider(
             layout: FlowLayout(spacing: 8).inset(20),
-            animator: AnimatedReloadAnimator(duration: 0.25)
+            animator: AnimatedAnimator(duration: 0.25)
         ) {
             for (index, data) in dataSource.enumerated() {
                 LabelProvider(text: data)

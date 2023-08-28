@@ -64,6 +64,15 @@
       }
     },
     {
+      "identity" : "uicomponent",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/lkzhao/UIComponent.git",
+      "state" : {
+        "revision" : "3543500d585f032a48c4708617cf30bedc19c331",
+        "version" : "1.4.4"
+      }
+    },
+    {
       "identity" : "yetanotheranimationlibrary",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/lkzhao/YetAnotherAnimationLibrary.git",

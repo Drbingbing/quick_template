@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AnimatedReloadAnimator: Animator {
+class AnimatedAnimator: Animator {
     var transform: CATransform3D
     var duration: TimeInterval
     var cascade: Bool

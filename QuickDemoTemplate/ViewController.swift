@@ -28,7 +28,8 @@ class ViewController: UIViewController {
             ViewControllerData(storyboard: .chat),
             ViewControllerData(storyboard: .resume),
             ViewControllerData(storyboard: .positionCategory),
-            ViewControllerData(storyboard: .dataBinding)
+            ViewControllerData(storyboard: .dataBinding),
+            ViewControllerData(storyboard: .uiComponentSample)
         ]
         
         collectionView.provider = CompositionProvider(
@@ -113,7 +114,6 @@ class TemplateCardView: BaseView {
     }
 }
 
-
 struct ViewControllerData {
     
     let storyboard: Storyboard
@@ -132,6 +132,8 @@ struct ViewControllerData {
             return ResumePreviewProvider()
         case .dataBinding:
             return ResumePreviewProvider()
+        case .uiComponentSample:
+            return ResumePreviewProvider()
         }
     }
     
@@ -145,6 +147,8 @@ struct ViewControllerData {
             return PrimaryPositionCategoryViewController.instantiate(with: DutyListDataGenerator.load(), displayAll: true, maxSelectableCount: 10)
         case .dataBinding:
             return DataBindingSampleViewController.instantiate()
+        case .uiComponentSample:
+            return UIComponentSampleViewController()
         }
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UIComponent
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,6 +26,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let scale: CGFloat = isHighlighted ? 0.95 : 1.0 / 0.95
                 UIView.animate(withDuration: 0.2) {
                     view.transform = view.transform.scaledBy(x: scale, y: scale)
+                }
+            }
+        )
+        
+        UIComponent.TappableViewConfiguration.default = UIComponent.TappableViewConfiguration(
+            onHighlightChanged: { view, isHighlighted in
+                let scale: CGFloat = isHighlighted ? 0.96 : 1
+                UIView.animate(withDuration: 0.2) {
+                    view.transform = .identity.scaledBy(x: scale, y: scale)
                 }
             }
         )

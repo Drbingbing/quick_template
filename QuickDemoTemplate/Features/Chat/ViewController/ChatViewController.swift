@@ -45,7 +45,7 @@ final class ChatViewController: UIViewController {
             viewSource: MessageViewSource(),
             sizeSource: MessageSizeSource(delegate: self),
             layout: MessageLayout(),
-            animator: AnimatedReloadAnimator()
+            animator: AnimatedAnimator()
         )
         collectionView.reloadData()
         collectionView.scrollToBottom(animated: false)

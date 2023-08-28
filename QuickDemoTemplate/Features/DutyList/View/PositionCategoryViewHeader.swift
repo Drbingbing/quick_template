@@ -47,7 +47,7 @@ class PositionCategoryViewHeader: BaseView {
             if isExpand {
                 CompositionProvider(
                     layout: FlowLayout(spacing: 8).inset(left: 8, right: 8),
-                    animator: AnimatedReloadAnimator()
+                    animator: AnimatedAnimator()
                 ) {
                     SpaceProvider(height: 4)
                     for datum in data {

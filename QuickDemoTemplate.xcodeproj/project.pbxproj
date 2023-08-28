@@ -120,10 +120,13 @@
 		3083C9F82A81E995005F78B4 /* BottomSheetContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3083C9F72A81E995005F78B4 /* BottomSheetContentViewController.swift */; };
 		309B75E12A7A25CB00C1D004 /* SwifterSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 309B75E02A7A25CB00C1D004 /* SwifterSwift */; };
 		309B75E32A7A59C000C1D004 /* IconProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309B75E22A7A59C000C1D004 /* IconProvider.swift */; };
+		30A7D1982A988235002A3751 /* UIComponent in Frameworks */ = {isa = PBXBuildFile; productRef = 30A7D1972A988235002A3751 /* UIComponent */; };
+		30A7D19F2A9882D9002A3751 /* UIComponentSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A7D19E2A9882D9002A3751 /* UIComponentSampleViewController.swift */; };
+		30A7D1A12A989652002A3751 /* Extension+UIComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A7D1A02A989652002A3751 /* Extension+UIComponent.swift */; };
 		30C8B9B22A4D0FAC003D73FA /* Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C8B9AF2A4D0FAC003D73FA /* Nib.swift */; };
 		30C8B9B32A4D0FAC003D73FA /* Stoaryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C8B9B12A4D0FAC003D73FA /* Stoaryboard.swift */; };
 		30C8B9B62A4D0FE1003D73FA /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30C8B9B52A4D0FE1003D73FA /* Chat.storyboard */; };
-		30C8B9B92A4D12CB003D73FA /* AnimatedReloadAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C8B9B82A4D12CB003D73FA /* AnimatedReloadAnimator.swift */; };
+		30C8B9B92A4D12CB003D73FA /* AnimatedAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C8B9B82A4D12CB003D73FA /* AnimatedAnimator.swift */; };
 		30C8B9BC2A4D1A81003D73FA /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 30C8B9BB2A4D1A81003D73FA /* RxCocoa */; };
 		30C8B9BE2A4D1A81003D73FA /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 30C8B9BD2A4D1A81003D73FA /* RxSwift */; };
 		30C8B9C02A4D2B59003D73FA /* Extension+CATransform3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C8B9BF2A4D2B59003D73FA /* Extension+CATransform3D.swift */; };
@@ -316,10 +319,12 @@
 		3083C9F42A81E181005F78B4 /* BottomSheetFloatingPanelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetFloatingPanelStyle.swift; sourceTree = "<group>"; };
 		3083C9F72A81E995005F78B4 /* BottomSheetContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetContentViewController.swift; sourceTree = "<group>"; };
 		309B75E22A7A59C000C1D004 /* IconProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconProvider.swift; sourceTree = "<group>"; };
+		30A7D19E2A9882D9002A3751 /* UIComponentSampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentSampleViewController.swift; sourceTree = "<group>"; };
+		30A7D1A02A989652002A3751 /* Extension+UIComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIComponent.swift"; sourceTree = "<group>"; };
 		30C8B9AF2A4D0FAC003D73FA /* Nib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nib.swift; sourceTree = "<group>"; };
 		30C8B9B12A4D0FAC003D73FA /* Stoaryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stoaryboard.swift; sourceTree = "<group>"; };
 		30C8B9B52A4D0FE1003D73FA /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
-		30C8B9B82A4D12CB003D73FA /* AnimatedReloadAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedReloadAnimator.swift; sourceTree = "<group>"; };
+		30C8B9B82A4D12CB003D73FA /* AnimatedAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedAnimator.swift; sourceTree = "<group>"; };
 		30C8B9BF2A4D2B59003D73FA /* Extension+CATransform3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+CATransform3D.swift"; sourceTree = "<group>"; };
 		30C8B9C22A4D68AF003D73FA /* CardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardData.swift; sourceTree = "<group>"; };
 		30C8B9C42A4E6028003D73FA /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
@@ -368,6 +373,7 @@
 				30C8BA492A53F669003D73FA /* BaseToolbox in Frameworks */,
 				309B75E12A7A25CB00C1D004 /* SwifterSwift in Frameworks */,
 				30C8B9BC2A4D1A81003D73FA /* RxCocoa in Frameworks */,
+				30A7D1982A988235002A3751 /* UIComponent in Frameworks */,
 				3011ABD72A4C2C8300801CD7 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -689,7 +695,7 @@
 				3011AB732A4AC0D800801CD7 /* Animator.swift */,
 				3011AB742A4AC0D800801CD7 /* FadeAnimator.swift */,
 				3011AB752A4AC0D800801CD7 /* ScaleAnimator.swift */,
-				30C8B9B82A4D12CB003D73FA /* AnimatedReloadAnimator.swift */,
+				30C8B9B82A4D12CB003D73FA /* AnimatedAnimator.swift */,
 			);
 			path = Animator;
 			sourceTree = "<group>";
@@ -755,6 +761,7 @@
 				30CCF2B92A54FA9300806520 /* UIEdgeInset.swift */,
 				30D0EF1B2A68CEC9006301D2 /* Extension+SimpleViewProvider.swift */,
 				30051B482A73A8A2006DE8B7 /* Extension+Provider.swift */,
+				30A7D1A02A989652002A3751 /* Extension+UIComponent.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -762,6 +769,7 @@
 		3011ABCD2A4BBBFD00801CD7 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				30A7D1992A98828A002A3751 /* UIComponentSample */,
 				30290BE52A96DDD800982B42 /* DataBinding */,
 				30D0EF312A70CECF006301D2 /* DutyList */,
 				30D0EF0E2A64E391006301D2 /* Resume */,
@@ -858,6 +866,22 @@
 				3083C9F72A81E995005F78B4 /* BottomSheetContentViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		30A7D1992A98828A002A3751 /* UIComponentSample */ = {
+			isa = PBXGroup;
+			children = (
+				30A7D19D2A9882C4002A3751 /* ViewController */,
+			);
+			path = UIComponentSample;
+			sourceTree = "<group>";
+		};
+		30A7D19D2A9882C4002A3751 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				30A7D19E2A9882D9002A3751 /* UIComponentSampleViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		30C8B9AE2A4D0FAC003D73FA /* Nib */ = {
@@ -1060,6 +1084,7 @@
 				30051AFF2A7116D5006DE8B7 /* SwiftyJSON */,
 				309B75E02A7A25CB00C1D004 /* SwifterSwift */,
 				3083C9ED2A81D5F2005F78B4 /* FloatingPanel */,
+				30A7D1972A988235002A3751 /* UIComponent */,
 			);
 			productName = QuickDemoTemplate;
 			productReference = 3011AAF52A4ABF5000801CD7 /* QuickDemoTemplate.app */;
@@ -1164,6 +1189,7 @@
 				30051AFE2A7116D5006DE8B7 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				309B75DF2A7A25CB00C1D004 /* XCRemoteSwiftPackageReference "SwifterSwift" */,
 				3083C9EC2A81D5F2005F78B4 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
+				30A7D1962A988235002A3751 /* XCRemoteSwiftPackageReference "UIComponent" */,
 			);
 			productRefGroup = 3011AAF62A4ABF5000801CD7 /* Products */;
 			projectDirPath = "";
@@ -1229,6 +1255,7 @@
 				30051B2E2A720D64006DE8B7 /* CheckboxBoxShape.swift in Sources */,
 				30C8B9C32A4D68AF003D73FA /* CardData.swift in Sources */,
 				3011ABA12A4AC20300801CD7 /* Deprecated.swift in Sources */,
+				30A7D19F2A9882D9002A3751 /* UIComponentSampleViewController.swift in Sources */,
 				3011AB952A4AC1FE00801CD7 /* RowLayout.swift in Sources */,
 				30C8B9E92A52AA6E003D73FA /* Extension+String.swift in Sources */,
 				3011ABA72A4AC20800801CD7 /* EmptyCollectionProvider.swift in Sources */,
@@ -1289,6 +1316,7 @@
 				30051B032A71174E006DE8B7 /* DutyListDataGenerator.swift in Sources */,
 				30051B2F2A720D64006DE8B7 /* AnimatableCheckbox.swift in Sources */,
 				3011AB962A4AC1FE00801CD7 /* LayoutContext.swift in Sources */,
+				30A7D1A12A989652002A3751 /* Extension+UIComponent.swift in Sources */,
 				3011AB9B2A4AC1FE00801CD7 /* InsetLayout.swift in Sources */,
 				3083C9F82A81E995005F78B4 /* BottomSheetContentViewController.swift in Sources */,
 				3011AB8A2A4AC1F400801CD7 /* DataSource.swift in Sources */,
@@ -1320,7 +1348,7 @@
 				30C8B9B32A4D0FAC003D73FA /* Stoaryboard.swift in Sources */,
 				30051B052A71179F006DE8B7 /* Pair.swift in Sources */,
 				3011ABAB2A4AC20E00801CD7 /* LayoutableProvider.swift in Sources */,
-				30C8B9B92A4D12CB003D73FA /* AnimatedReloadAnimator.swift in Sources */,
+				30C8B9B92A4D12CB003D73FA /* AnimatedAnimator.swift in Sources */,
 				30D0EF162A64E592006301D2 /* ResumePreviewProvider.swift in Sources */,
 				30051B452A7270B2006DE8B7 /* PositionCategoryViewHeader.swift in Sources */,
 				30051B072A71F4BC006DE8B7 /* CodeJson.swift in Sources */,
@@ -1788,6 +1816,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		30A7D1962A988235002A3751 /* XCRemoteSwiftPackageReference "UIComponent" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lkzhao/UIComponent.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		30C8B9BA2A4D1A81003D73FA /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
@@ -1842,6 +1878,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 309B75DF2A7A25CB00C1D004 /* XCRemoteSwiftPackageReference "SwifterSwift" */;
 			productName = SwifterSwift;
+		};
+		30A7D1972A988235002A3751 /* UIComponent */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 30A7D1962A988235002A3751 /* XCRemoteSwiftPackageReference "UIComponent" */;
+			productName = UIComponent;
 		};
 		30C8B9BB2A4D1A81003D73FA /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;

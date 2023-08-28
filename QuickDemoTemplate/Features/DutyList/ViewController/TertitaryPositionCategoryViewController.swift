@@ -152,7 +152,7 @@ class TertitaryPositionCategoryViewController: UIViewController {
                         return aSize
                     },
                     layout: FlowLayout().inset(left: 20, right: 20),
-                    animator: AnimatedReloadAnimator(),
+                    animator: AnimatedAnimator(),
                     tapHandler: { [weak self] context in
                         guard let self else { return }
                         
