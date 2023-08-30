@@ -118,6 +118,7 @@
 		3083C9F22A81DF90005F78B4 /* BottomSheetPanelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3083C9F12A81DF90005F78B4 /* BottomSheetPanelLayout.swift */; };
 		3083C9F52A81E181005F78B4 /* BottomSheetFloatingPanelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3083C9F42A81E181005F78B4 /* BottomSheetFloatingPanelStyle.swift */; };
 		3083C9F82A81E995005F78B4 /* BottomSheetContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3083C9F72A81E995005F78B4 /* BottomSheetContentViewController.swift */; };
+		3089AAFB2A9EEBEA0065345A /* Extension+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3089AAFA2A9EEBEA0065345A /* Extension+Image.swift */; };
 		309B75E12A7A25CB00C1D004 /* SwifterSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 309B75E02A7A25CB00C1D004 /* SwifterSwift */; };
 		309B75E32A7A59C000C1D004 /* IconProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309B75E22A7A59C000C1D004 /* IconProvider.swift */; };
 		30A7D1982A988235002A3751 /* UIComponent in Frameworks */ = {isa = PBXBuildFile; productRef = 30A7D1972A988235002A3751 /* UIComponent */; };
@@ -318,6 +319,7 @@
 		3083C9F12A81DF90005F78B4 /* BottomSheetPanelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetPanelLayout.swift; sourceTree = "<group>"; };
 		3083C9F42A81E181005F78B4 /* BottomSheetFloatingPanelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetFloatingPanelStyle.swift; sourceTree = "<group>"; };
 		3083C9F72A81E995005F78B4 /* BottomSheetContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetContentViewController.swift; sourceTree = "<group>"; };
+		3089AAFA2A9EEBEA0065345A /* Extension+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Image.swift"; sourceTree = "<group>"; };
 		309B75E22A7A59C000C1D004 /* IconProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconProvider.swift; sourceTree = "<group>"; };
 		30A7D19E2A9882D9002A3751 /* UIComponentSampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentSampleViewController.swift; sourceTree = "<group>"; };
 		30A7D1A02A989652002A3751 /* Extension+UIComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIComponent.swift"; sourceTree = "<group>"; };
@@ -762,6 +764,7 @@
 				30D0EF1B2A68CEC9006301D2 /* Extension+SimpleViewProvider.swift */,
 				30051B482A73A8A2006DE8B7 /* Extension+Provider.swift */,
 				30A7D1A02A989652002A3751 /* Extension+UIComponent.swift */,
+				3089AAFA2A9EEBEA0065345A /* Extension+Image.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -1336,6 +1339,7 @@
 				309B75E32A7A59C000C1D004 /* IconProvider.swift in Sources */,
 				30290BE42A960D5700982B42 /* Disposable.swift in Sources */,
 				3011ABA32A4AC20800801CD7 /* ComposedProvider.swift in Sources */,
+				3089AAFB2A9EEBEA0065345A /* Extension+Image.swift in Sources */,
 				30051B4B2A78931E006DE8B7 /* BadgeProvider.swift in Sources */,
 				3083C9F22A81DF90005F78B4 /* BottomSheetPanelLayout.swift in Sources */,
 				30CCF2BA2A54FA9300806520 /* UIEdgeInset.swift in Sources */,

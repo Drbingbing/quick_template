@@ -176,10 +176,12 @@ final class UIComponentSampleViewController: UIViewController {
             
             Space(height: 20)
             
-            VStack(spacing: 8) {
+            VStack {
                 Text("工作經驗", font: .systemFont(ofSize: 16, weight: .bold))
                     .textColor(.red1)
                     .inset(left: 28)
+                
+                Space(height: 8)
                 
                 VStack(spacing: 12) {
                     VStack(spacing: 4) {
@@ -191,6 +193,82 @@ final class UIComponentSampleViewController: UIViewController {
                         Text("累積經驗")
                             .textColor(.systemGray)
                         Text("無")
+                    }
+                }
+                .inset(12)
+                .size(width: .fill)
+                .view()
+                .cornerRadius(10)
+                .backgroundColor(.background)
+                .shadow(4)
+                .id(UIComponentSampleSectionKey.workExperience.key)
+                .inset(h: 20)
+                
+                Space(height: 4)
+                
+                HStack(justifyContent: .center) {
+                    UIView()
+                        .then { $0.backgroundColor = .systemGray }
+                        .view()
+                        .size(width: 1, height: 12)
+                }
+                
+                Space(height: 4)
+                
+                HStack(spacing: 6) {
+                    Image("icon_tag", renderingMode: .alwaysTemplate)
+                        .tintColor(.systemGray)
+                        .offset(y: 2)
+                    
+                    VStack(spacing: 12) {
+                        VStack(spacing: 4) {
+                            Text("最近工作")
+                                .textColor(.systemGray)
+                            Text("Demo(電腦系統整合服務相關)")
+                        }
+                        VStack(spacing: 4) {
+                            Text("職務名稱")
+                                .textColor(.systemGray)
+                            Text("Demo(2017/7 ~ 2018/7), 全職")
+                        }
+                    }
+                }
+                .inset(12)
+                .size(width: .fill)
+                .view()
+                .cornerRadius(10)
+                .backgroundColor(.background)
+                .shadow(4)
+                .id(UIComponentSampleSectionKey.workExperience.key)
+                .inset(h: 20)
+                
+                Space(height: 4)
+                
+                HStack(justifyContent: .center) {
+                    UIView()
+                        .then { $0.backgroundColor = .systemGray }
+                        .view()
+                        .size(width: 1, height: 12)
+                }
+                
+                Space(height: 4)
+                
+                HStack(spacing: 8) {
+                    Image("icon_tag", renderingMode: .alwaysTemplate)
+                        .tintColor(.systemGray)
+                        .offset(y: 2)
+                    
+                    VStack(spacing: 12) {
+                        VStack(spacing: 4) {
+                            Text("前一工作")
+                                .textColor(.systemGray)
+                            Text("Demo(電腦系統整合服務相關)")
+                        }
+                        VStack(spacing: 4) {
+                            Text("職務名稱")
+                                .textColor(.systemGray)
+                            Text("Demo(2017/7 ~ 2018/7), 全職")
+                        }
                     }
                 }
                 .inset(12)
